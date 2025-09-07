@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0e4ff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background-image: url("background.jpg");
+            background-size: cover;
+        }
+        .card {
+            text-align: center;
+            background: rgb(238, 122, 122);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            position: relative;
+        }
+        .hidden {
+            display: none;
+        }
+        .heart {
+            font-size: 50px;
+            color: #ff4d4d;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #e04343;
+        }
+        .falling-heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4d4d;
+            animation: fall 3s linear forwards;
+            pointer-events: none;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>HAPPY BIRTHDAY LIL SWEETIE :))) 🎉</h1>
+        <p><b>Click below for a special surprise! ;)</b></p>
+        <button onclick="revealMessage()">Reveal Message</button>
+        <div id="message" class="hidden">
+            <p> <b>happy sweetest birthday ever my lil sweetie saadzoi:))) i know past couple of days/months has been hard both personally
+                and relationship wise but just know that it <br> will be ok you will get over it and happy sweetest birthday :) make surprise
+                you enjoy the day with friends and family <br> i love you even though I haven't been showing love but I assure you I love you 
+                still like day 1 I wish you the best in <br> your birthday and be a good girl and take care oki? :) *pats on ur head and kisses
+                your forehead* I love you again!! </b>
+            </p>
+            <div class="heart">❤️</div>
+        </div>
+    </div>
+    <script>
+        function revealMessage() {
+            document.getElementById('message').classList.remove('hidden');
+            document.querySelector('button').style.display = 'none';
+            createFallingHearts();
+        }
+
+        function createFallingHearts() {
+            const numHearts = 20;
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'falling-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 3000);
+            }
+        }
+    </script>
+</body>
+</html>
